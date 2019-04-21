@@ -1,0 +1,366 @@
+<html>
+<head>
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "yukbauser";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+
+// sql to create table
+?>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="vastr.css">-->
+<script>
+func()
+{
+window.location="new-1.html";
+}
+<title>User</title>
+<nav>
+<ul id="navul" class="s3">
+  <li id="navli"><a href="new-1.html" id="nava">Home</a></li>
+<li id="navli"><a href="new-1.html" id="nava">New Order</a></li>
+<li id="navli"><a href="new-1.html" id="nava">Track Order</a></li>
+<li id="navli"><a href="new-1.html" id="nava">Delivery Status</a></li>
+<li id="navli"><a href="new-1.html" id="nava">Sales</a></li>
+<li id="navli"><a href="new-1.html" id="nava">Logout</a></li>
+	  </ul>
+<br>
+<br>
+<br>
+
+</nav>
+</head>
+    <body >
+<center>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<form  name="order_form" action="yukbasql.php"  method="POST" >
+							<div class="wthree-text"> 
+
+								<!--<h6>Information</h6>-->
+							
+
+								<div class="phone_email">
+									<label>Order No : </label>
+									<div class="form-text">
+										<input type="text" name="order_number" id="order_number"  value="<?php 
+										
+$sql = "SELECT MAX(ORDERNUMBER) FROM theyukbauser";
+
+echo $conn->query($sql)+1;
+
+?>  " >
+										<span class="error">* </span>
+									</div> 
+								</div>
+								<br/>
+								
+								
+								<div class="clear"></div>	
+
+
+								<div class="phone_email">
+									<label>Phone number : </label>
+									<div class="form-text">
+										<input type="text" name="phone_number" id='phone123' >
+										<span class="error">* </span>
+									</div> 
+								</div> 
+								
+			
+								<div class="clear"></div>	
+
+								<div class="phone_email">
+									<label>Full name : </label>
+									<div class="form-text">
+										<input type="text" name="name" >
+									</div> 
+								</div>
+
+								<div class="clear"></div>
+
+							
+								<div class="phone_email">
+									<label>Email address : </label>
+									<div class="form-text">
+										<input type="email" name="email" placeholder="myname@example.com" >
+									</div> 
+								</div>
+								<!-- removed no of guests -->
+								
+								
+
+
+								<div class="phone_email phone_email1">
+										<label>Date of Order : </label> 
+										<div class="form-text"> 
+												<input type="date" name="date_of_order">
+										</div>					
+								</div>
+
+								<div class="clear"></div>
+								
+								<div class="phone_email text-area-wthree">
+									<label>Address : </label>
+									<div class="form-text">
+										<textarea name="address"></textarea>
+									</div> 
+								</div> 
+
+
+							<div class="clear"></div>
+
+						<!-- //Items list -->	
+
+							<label>Items: </label>
+			
+									
+							<table class="order-list">
+								<thead>
+									<tr><td>Item</td><td>Price</td><td>Quantity</td><td>Amount</td></tr>
+								</thead>
+								
+								<tbody>
+									<tr>
+										<td><input type="text" name="item_name" /></td>
+										<td><input type="text" name="item_rate" /></td>
+										<td><input type="text" name="item_quantity" /></td>
+										<td><input type="text" name="item_amount" readonly="readonly" /></td>
+										<td><a class="deleteRow"> x </a></td>
+									</tr>
+								</tbody>
+								
+								<tfoot>
+									<tr>
+										<td colspan="5" style="text-align: center;">
+											<input type="button" id="addrow" value="Add Product" />
+										</td>
+									</tr>
+									
+									 
+								</tfoot>
+							</table>
+							
+    						<br/>
+
+
+								<div class="clear"></div>
+
+						
+								<div class="phone_email">
+									<label>Total Amount : </label>
+									<div class="form-text">
+										<input type="text" id="total_amount" name="sub_total" oninput="calculate()">
+									</div> 
+								</div>
+								<div class="clear"></div>
+			
+								<!--changed from "discount" to "advance paid" -->
+								<div class="phone_email">
+									<label>Advance Paid : </label>
+									<div class="form-text">
+										<input type="text" id="advance_paid" name="discount" oninput="calculate()">
+									</div> 
+								</div>
+
+								<div class="clear"></div>
+
+								<div class="phone_email">
+									<label>Total Amount to be paid : </label>
+									<div class="form-text">
+										<input type="text" id="amount_to_be_paid" name="total_amount_to_be_paid">
+									</div> 
+								</div>
+								
+								<div class="clear"></div>
+								
+								<div class="phone_email">
+										<label>Date of Delivery : </label> 
+										<div class="form-text"> 
+												<input type="date" name="date_of_delivery">		
+										</div>					
+								</div>
+								
+								<div class="clear"></div>
+						
+								 
+
+								<div class="clear"></div>
+								
+								<div class="phone_email text-area-wthree">
+									<label>Comments : </label>
+									<div class="form-text">
+										<textarea name="comments" placeholder="Add Your Comments Here !" ></textarea>
+									</div> 
+								</div> 
+
+							<div class="clear"></div>
+
+							<div id="filediv"><input name="file[]" type="file" id="file"/></div><br/>
+           
+							<input type="button" id="add_more" class="upload" value="Add More Files"/>
+								
+								<div class="clear"></div>
+								
+								</div> 
+											<div class="clear"> </div>
+											
+								<div class="btn" align="center">
+								<input class="button button" type = "submit" value = "Submit Form" style="margin-left:2px" >
+								<input type="submit" name="clear" value="CLEAR INFORMATION" onClick="clearField();">
+								</div>
+								<br/>
+								<div class="link" align="center">
+								
+								<a href="print.php" target="_blank" class="link" autofocus>Print Bill</a>
+								
+							     
+							    </div>
+								
+								
+								 
+							</form>
+
+
+	</center>
+</body>
+<script>
+function myFunction() {
+	var phone1 = document.getElementById("phone123").value;
+	//alert(phone1);
+	
+   window.open("https://www.newlookboutique.com/web/measurement.php?phone="+phone1, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=500,height=800");
+	    //window.open("http://localhost/YUKBA/web/measurement.php?phone="+phone1, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=500,height=800");
+
+}
+
+function calculate() {
+	var x = document.getElementById('total_amount').value;	
+	var y = document.getElementById('advance_paid').value;
+	var amount_to_be_paid = document.getElementById('amount_to_be_paid');	
+	var myResult = x - y;
+	amount_to_be_paid.value = myResult;
+}
+
+
+$(document).ready(function () {
+    var counter = 1;
+    
+    $('#addrow').on("click", function () {
+        counter++;
+        
+        var newRow = $("<tr>");
+        var cols = "";
+        cols += '<td><input type="text" name="item_name' + counter + '"/></td>';
+        cols += '<td><input type="text" name="item_rate' + counter + '"/></td>';
+        cols += '<td><input type="text" name="item_quantity' + counter + '"/></td>';
+        cols += '<td><input type="text" name="item_amount' + counter + '" readonly="readonly"/></td>';
+        cols += '<td><a class="deleteRow"> x </a></td>';
+        newRow.append(cols);
+        
+        $("table.order-list").append(newRow);
+    });
+    
+    $("table.order-list").on("change", 'input[name^="item_rate"], input[name^="item_quantity"]', function (event) {
+        calculateRow($(this).closest("tr"));
+        calculateGrandTotal();
+    });
+    
+    $("table.order-list").on("click", "a.deleteRow", function (event) {
+        $(this).closest("tr").remove();
+        calculateGrandTotal();
+    });
+
+
+  $('#save').click(function(){
+		
+  var item_name = [];  
+  var item_rate = [];
+  var item_quantity = [];
+  var item_amount = [];
+  
+  var order_num = ($('input[name^="order_number"]').val());
+
+  
+  $('input[name^="item_name"]').each(function(){
+   item_name.push($(this).val());
+  });
+  
+  $('input[name^="item_rate"]').each(function(){
+   item_rate.push($(this).val());
+  });
+  $('input[name^="item_quantity"]').each(function(){
+   item_quantity.push($(this).val());
+  });
+  $('input[name^="item_amount"]').each(function(){
+   item_amount.push($(this).val());
+  });
+  
+  $.ajax({
+   url:"insert.php",
+   method:"POST",
+   data:{order_num:order_num, item_name:item_name, item_rate:item_rate, item_quantity:item_quantity, item_amount:item_amount},
+   success:function(data){
+    alert(data);
+   }
+  });
+ });
+
+function calculateRow(row) {
+    var price = +row.find('input[name^="item_rate"]').val();
+    var qty = +row.find('input[name^="item_quantity"]').val();
+    row.find('input[name^="item_amount"]').val((price * qty).toFixed(2));
+}
+    
+function calculateGrandTotal() {
+    var grandTotal = 0;
+    $("table.order-list").find('input[name^="item_amount"]').each(function () {
+        grandTotal += +$(this).val();
+    });
+	$(document).find('input[name^="sub_total"]').val(grandTotal.toFixed(2));
+    //$("#total_amount").text(grandTotal.toFixed(2));
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function clearForm() {
+if(document.getElementById) {
+document.myForm.reset();
+}
+}
+</script>
+
+</html>

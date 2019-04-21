@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Pant</title>
+</head>
+<body>
+PANT
+	<div>
+    <Select type="text"  style="width:220px; height: 30px;">
+       <?php
+	   $host = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "Users";
+        $con = mysqli_init();
+		mysqli_real_connect($con, $host, $username, $password, $dbname, 3306);
+
+            if($con->connect_errno) {
+                // error reporting here
+            }
+               
+   
+$sql = "SELECT id,name FROM theusers";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+
+    while($row = $result->fetch_assoc()) {
+       
+               echo '<option>'.$row['name'].'</option>';
+         
+     }
+}    
+ else {
+    echo "0 results";
+}
+
+
+       ?>
+    </select>
+</div>
+	
+<form  action="pantorders.php" method="POST">
+
+	Length
+	<input type="number" name ="length" >
+	<br>
+	Waist
+	<input type="number" name ="waist" >
+
+	<br>
+	InSeam
+	<input type="number" name ="inseam" >
+	<br>
+	Delivery Date
+	<input type = "date" name="date">
+	<br>
+	<input type = "submit" value = "Submit Form">
+<hr>
+	</form>
+</body>
+</html>

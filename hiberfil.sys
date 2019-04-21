@@ -1,0 +1,130 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<style>
+h1{
+	text-align: left;
+	color: beige;
+	background-color: black;
+	text-decoration: underline;
+	font-family: cursive;
+	font-style: oblique;
+	
+}
+table, th, td,tr {
+   border: 1px solid black;
+   border-collapse: collapse;
+   width: 50%;
+   text-align:left;
+   padding: 15px;
+
+   
+   border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:hsl(39, 75%, 50%);}
+#demo{
+	font-style: italic;
+	font-family: OpenSans-Semibold;
+	font-size:25px;
+	font-weight: normal;
+	font-color: black;
+
+}
+.button {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: center-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    cursor: pointer;
+	float:center;
+	margin-right:100px;
+	
+	top=50%;
+}
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid hsl(39, 75%, 50%);
+	border-radius:100%;
+	
+}
+
+.button1:hover {
+    background-color:hsl(39, 75%, 50%);
+    color: black;
+}
+
+.button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid hsl(39, 75%, 50%);
+	border-radius:100%;
+	}
+.button2:hover {
+    background-color:hsl(39, 60%, 50%);
+    color: black;
+}
+
+
+.dropbtn {
+	
+    background-color: black;
+    color: white;
+    padding: 16px;
+    font-size: 25px;
+    border-radius: 20%;
+    cursor: pointer;
+    
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: hsl(39, 60%, 50%);
+}
+body{
+	
+	padding: 0px;
+	border: 0px;
+	margin: 0px;
+	height: 750px;
+	background-size: 100% 100%;
+}
+</style> 
+</head>
+</html>
+
